@@ -15,7 +15,9 @@ class App extends Component {
 	}
 
 	componentDidMount(){
-		fetch('https://jsonplaceholder.typicode.com/users')
+		const proxyurl = "https://cors-anywhere.herokuapp.com/";
+		const url = "https://jsonplaceholder.typicode.com/users"; // site that doesn’t send Access-Control-*
+		fetch(proxyurl + url)
 			.then(response => response.json())
 			.then(users => this.setState({ robots: users }));
 	}
